@@ -1,0 +1,9 @@
+*.py[cod]
+__pycache__/
+public
+.idea
+.env
+.vscode
+.history
+postgresql
+frontend/src/node_modules/

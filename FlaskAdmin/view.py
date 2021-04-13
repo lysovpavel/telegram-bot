@@ -17,3 +17,16 @@ def get_command(key):
             'content': command.content,
         }
     return json.dumps(data)
+
+@app.route('/commands')
+def get_commands():
+    data = []
+    commands = Command.query.all()
+    for command in commands:
+        data.append({
+            'id': command.id,
+            'key': command.key,
+            'title': command.title,
+            'content': command.content,
+        })
+    return json.dumps(data)

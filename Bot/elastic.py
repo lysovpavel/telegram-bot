@@ -8,6 +8,6 @@ from requests.auth import HTTPBasicAuth
 #     'password': 'YjhvfkmysqNfrjqGfhjkm'
 # }
 
-response = requests.get('http://192.168.10.10:5002/_cat/indices', auth=HTTPBasicAuth('elastic', 'YjhvfkmysqNfrjqGfhjkm'))
+response = requests.put('http://192.168.10.10:5002/messages?pretty', auth=HTTPBasicAuth('elastic', 'YjhvfkmysqNfrjqGfhjkm'))
 print(response)
 print(response.content)

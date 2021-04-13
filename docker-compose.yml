@@ -1,31 +1,53 @@
 version: '3'
 
 services:
-  bot:
-    build: Bot/
-#    restart: always
+#  bot:
+#    build: Bot/
+##    restart: always
+#
+#  flask_admin:
+#    build: FlaskAdmin/
+##    restart: always
+#    depends_on:
+#      - postgres
+#    ports:
+#      - 5000:5000
+#    environment:
+#      - TZ=Europe/Moscow
+#      - POSTGRES_DB
+#      - POSTGRES_USER
+#      - POSTGRES_PASSWORD
 
-  flask_admin:
-    build: FlaskAdmin/
-#    restart: always
-    depends_on:
-      - postgres
-    ports:
-      - 5000:5000
-    environment:
-      - TZ=Europe/Moscow
-      - POSTGRES_DB
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
+#  postgres:
+#    image: postgres:11-alpine
+#    environment:
+#      - POSTGRES_DB
+#      - POSTGRES_USER
+#      - POSTGRES_PASSWORD
+#    ports:
+#      - 5432:5432
+#    volumes:
+#      - ./postgresql/dumps:/code/dumps
+#      - ./postgresql/data:/var/lib/postgresql/data
+#
+#  nats1:
+#    image: nats:latest
+#    hostname: nats
+#    expose:
+#      - "4222"
+#    ports:
+#      - "8222:8222"
+#      - "4222:4222"
+#    command: [ '-DV' ]
 
-  postgres:
-    image: postgres:11-alpine
+  mongodb:
+    image: mongo:latest
+#    restart: always
     environment:
-      - POSTGRES_DB
-      - POSTGRES_USER
-      - POSTGRES_PASSWORD
-    ports:
-      - 5432:5432
+      - MONGO_INITDB_DATABASE=tg_bot
+      - MONGO_INITDB_ROOT_USERNAME=user
+      - MONGO_INITDB_ROOT_PASSWORD=password
     volumes:
-      - ./postgresql/dumps:/code/dumps
-      - ./postgresql/data:/var/lib/postgresql/data
+      - ./data/db:/data/db
+    ports:
+      - 27017-27019:27017-27019
