@@ -6,4 +6,5 @@ public
 .vscode
 .history
 postgresql
+data
 frontend/src/node_modules/
